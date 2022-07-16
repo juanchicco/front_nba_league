@@ -1,0 +1,72 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section{
+  display: grid;
+}
+.containerForm{
+  margin: auto;
+  margin-top: 4rem;
+  width: 400px;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #172026;
+  font-family: 'Roboto', sans-serif;
+}
+.containerForm h3{
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.campo-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 16px;
+  color: #A7BDD9;
+}
+.input{
+  padding: 12px;
+  outline: none;
+  background-color: #172026;
+  border: 1px solid #0268d6;
+  border-radius: 4px;
+  font-size: 14px;
+  margin: 8px 0;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+}
+.containerForm button{
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 21px;
+  background-color: #0268d6;
+  color: white;
+  border: 1px solid #0268d6;
+  border-radius: 22.5px;
+  outline: none;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+.containerForm p{
+  text-align: center;
+  margin: 10px 0;
+  color: #A7BDD9;
+}
+.containerForm p a{
+  text-decoration: none;
+  color: #304EF2;
+}
+.fila-head > table{
+  color: white;
+}
+.founder{
+  display: flex;
+  align-items: center;
+}
