@@ -12,7 +12,7 @@ function Player(){
     const[selectedPlayer,setSelectedPlayer] = useState(null)
 
     useEffect(()=>{
-        fetch('http://localhost:3030/players')
+        fetch('https://nba-league-api.herokuapp.com/players')
         .then(res => res.json())
         .then((data) => setData(data))
         .catch((err) => setError(true))

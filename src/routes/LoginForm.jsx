@@ -22,7 +22,7 @@ const LoginForm = () => {
                 password: data.password
             }
             console.log(JSON.stringify(obj))
-            fetch("http://localhost:3030/users/login",{
+            fetch("https://nba-league-api.herokuapp.com/users/login",{
                 method: "POST",
                 headers:{
                     "Accept" : "application/json",

@@ -24,7 +24,7 @@ const RegisterForm = () => {
                 password: data.password
             }
             console.log(JSON.stringify(obj))
-            fetch("http://localhost:3030/users/register",{
+            fetch("https://nba-league-api.herokuapp.com/users/register",{
                 method: "POST",
                 headers:{
                     "Accept" : "application/json",

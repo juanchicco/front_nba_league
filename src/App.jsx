@@ -15,7 +15,7 @@ function App() {
     }
 
     useEffect(() =>{
-        fetch('http://localhost:3030/teams')
+        fetch('https://nba-league-api.herokuapp.com/teams')
         .then(res => handleErorr(res))
         .then(data => setData(data))
         .catch(error => setError(true))
