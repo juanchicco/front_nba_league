@@ -7,7 +7,7 @@ import NavBar from '../components/NavBar'
 
 const RegisterForm = () => {
     return (
-        <body>
+        <>
             <NavBar/>
         <Formik
         initialValues = {{userName: "", email: "", password: ""}}
@@ -26,11 +26,11 @@ const RegisterForm = () => {
             console.log(JSON.stringify(obj))
             fetch("https://nba-league-api.herokuapp.com/users/register",{
                 method: "POST",
+                mode : "no-cors",
                 headers:{
                     "Accept" : "application/json",
                     'Content-Type' : 'application/json',
                 },
-                mode : "no-cors",
                 body: JSON.stringify(obj),
                 })
                 .then(res => res.json())
@@ -65,7 +65,7 @@ const RegisterForm = () => {
             <p>¿Ya tienes una cuenta? <a href="http://localhost:3000/users/login">Sign In</a></p>
         </Form>
         </Formik>
-        </body>
+        </>
     )
 }
 

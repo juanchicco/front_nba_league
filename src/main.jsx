@@ -15,7 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/users/register' element={<RegisterForm/>}/>
         <Route path='/users/login' element={<LoginForm/>}/>
         <Route path='/players' element={<Player/>}/>
-        <Route path='/playersOfTeam' element={<PlayersOfTeam/>}></Route>
+        <Route path='/playersOfTeam' element={<PlayersOfTeam/>}/>
       </Routes>
     
     </BrowserRouter>

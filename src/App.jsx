@@ -3,11 +3,14 @@ import './App.css'
 import TeamContext from './teamContext'
 import TeamCard from "./components/TeamCard"
 import NavBar from "./components/NavBar"
+import { Typography } from "@mui/material"
+import PlayersOfTeam from "./routes/PlayersOfTeam"
 
 function App() {
     const [data, setData] = useState([])
     const [error, setError] = useState(false)
     const [selectedTeam,setSelectedTeam] = useState(null)
+    
 
     function handleErorr(res) {
         if(!res.ok) throw Error(res.status)
@@ -37,6 +40,7 @@ function App() {
         <section>
           <TeamCard/>
         </section>
+        <PlayersOfTeam/>
       </main>
     </TeamContext.Provider>
     )

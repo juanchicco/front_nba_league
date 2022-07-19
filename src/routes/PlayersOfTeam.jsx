@@ -1,15 +1,18 @@
 import TeamContext from '../teamContext'
 import {useContext} from 'react'
-function PlayersOfTeam() {
+import {Typography} from '@mui/material'
+const PlayersOfTeam = () => {
     const {selectedTeam} = useContext(TeamContext)
     return(
-        selectedTeam && (
         <>
-            {console.log(selectedTeam)}
-            <h3>LLEGASTE AQUI</h3>
-            <div>{selectedTeam}</div>
+        <h1>Hello world</h1>
+        {selectedTeam && (
+            <div>
+                {selectedTeam.players}
+            </div>
+        
+        )}
         </>
-        )
     )
 }
 export default PlayersOfTeam
