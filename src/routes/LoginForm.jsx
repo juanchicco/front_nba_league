@@ -1,4 +1,6 @@
 import React from "react";
+import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage} from "formik";
 import {Button,Alert} from '@mui/material'
 import "../App.css"
@@ -6,41 +8,51 @@ import * as Yup from 'yup'
 import NavBar from '../components/NavBar'
 
 const LoginForm = () => {
+    const [state,setState] = useState({error: false,loggedIn:false})
+    
+    const navigate = useNavigate()
+    useEffect(() => {
+        if (state.loggedIn) navigate('/')
+    },[navigate,state.loggedIn])
+
     return (
-        <body>
+        <>
             <NavBar/>
         <Formik
         initialValues = {{userName: "", password: ""}}
         validationSchema={Yup.object({
             userName: Yup.string().min(3,"Min character count 3").max(80,"Max character count 80").required("Required"),
             password: Yup.string().min(8,"Min character count 8").max(50,"Max character count 50").required("Required")
-        })
-    }
-        onSubmit = { (data) => {
+            })
+        }>
+        <Form className="containerForm" id="form"
+        onSubmit={(e) => {
+            e.preventDefault()
+            const data = new FormData(document.getElementById("form"))
             const obj = {
-                userName: data.userName,
-                password: data.password
+                userName: data.get("userName"),
+                email: data.get("email"),
+                password: data.get("password")
             }
-            console.log(JSON.stringify(obj))
             fetch("https://nba-league-api.herokuapp.com/users/login",{
                 method: "POST",
-                headers:{
+                headers: {
                     "Accept" : "application/json",
-                    'Content-Type' : 'application/json',
+                    'Content-Type' : 'application/json' 
                 },
-                mode : "no-cors",
-                body: JSON.stringify(obj),
+                body: JSON.stringify(obj)
                 })
                 .then(res => res.json())
-                .then(json => {
-                    console.log(json)
-                })
-                .catch(err => console.log("ERROR" + err)
+                .then(data => 
+                    {if (data.status === 401) setState({error: true});
+                    else {
+                        setState({loggedIn: true})
+                        localStorage.setItem("token", data.Token_info.token)}
+                    }
                 )
-            }
-        }
+                .catch(err => console.log("ERRORR!!!" + err))
+        }}
         >
-        <Form className="containerForm" id="form">
             <h3>Register Form</h3>
             <div className="campo-form">
                 <label htmlFor="userName">User Name</label>
@@ -53,12 +65,14 @@ const LoginForm = () => {
                 <ErrorMessage component={Alert} severity="error" name="password"/>
             </div>
             
-            <Button  type="sumbit" variant="outlined">LogIn</Button>
+            <Button  type="sumbit" variant="outlined" /*onClick={handleClick}*/>LogIn</Button>
 
             <p>¿Aún no estas registrado? <a href="http://localhost:3000/users/register">Sign Up</a></p>
+
+            {state.error && <Alert severity="error">Credentials are invalid</Alert>}
         </Form>
         </Formik>
-        </body>
+        </>
     )
 }
 

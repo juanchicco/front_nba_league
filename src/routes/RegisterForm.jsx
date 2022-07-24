@@ -15,34 +15,31 @@ const RegisterForm = () => {
             userName: Yup.string().min(3,"Min character count 3").max(80,"Max character count 80").required("Required"),
             email: Yup.string().email("Invalid email adress").required("Required"),
             password: Yup.string().min(8,"Min character count 8").max(50,"Max character count 50").required("Required")
-        })
-    }
-        onSubmit = { (data) => {
+        })}
+    
+        >
+        <Form className="containerForm" id="form" 
+        onSubmit={(e) => {
+            e.preventDefault()
+            const data = new FormData(document.getElementById("form"))
             const obj = {
-                userName: data.userName,
-                email: data.email,
-                password: data.password
+                userName: data.get("userName"),
+                email: data.get("email"),
+                password: data.get("password")
             }
-            console.log(JSON.stringify(obj))
             fetch("https://nba-league-api.herokuapp.com/users/register",{
                 method: "POST",
-                mode : "no-cors",
-                headers:{
+                headers: {
                     "Accept" : "application/json",
-                    'Content-Type' : 'application/json',
+                    'Content-Type' : 'application/json' 
                 },
-                body: JSON.stringify(obj),
+                body: JSON.stringify(obj)
                 })
                 .then(res => res.json())
-                .then(json => {
-                    console.log(json)
-                })
-                .catch(err => console.log("ERROR!! " + err)
-                )
-            }
-        }
+                .then(data => console.log(data))
+                .catch(err => console.log("ERORRR!!" + err))
+        }}
         >
-        <Form className="containerForm" id="form">
             <h3>Register Form</h3>
             <div className="campo-form">
                 <label htmlFor="userName">User Name</label>

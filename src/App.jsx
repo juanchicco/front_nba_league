@@ -3,7 +3,7 @@ import './App.css'
 import TeamContext from './teamContext'
 import TeamCard from "./components/TeamCard"
 import NavBar from "./components/NavBar"
-import { Typography } from "@mui/material"
+//import { Typography } from "@mui/material"
 import PlayersOfTeam from "./routes/PlayersOfTeam"
 
 function App() {

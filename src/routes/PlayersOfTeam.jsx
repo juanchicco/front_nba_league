@@ -1,6 +1,6 @@
 import TeamContext from '../teamContext'
 import {useContext} from 'react'
-import {Typography} from '@mui/material'
+//import {Typography} from '@mui/material'
 const PlayersOfTeam = () => {
     const {selectedTeam} = useContext(TeamContext)
     return(
@@ -10,8 +10,7 @@ const PlayersOfTeam = () => {
             <div>
                 {selectedTeam.players}
             </div>
-        
-        )}
+             )}
         </>
     )
 }

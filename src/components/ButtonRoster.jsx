@@ -7,8 +7,8 @@ function ButtonRoster ({team}) {
     return(
     <>
         <Button 
-            size="large" key={team.id} href="#"
-            color="secondary" variant="contained" sx={{textAlign: 'center'}} 
+            size="large" key={team.id} 
+            color="secondary" variant="contained" sx={{textAlign: 'center'}}
             onClick={() => setSelectedTeam(team)}
         >Roster</Button>
     </>
